@@ -6,6 +6,7 @@ namespace MauiAppMinhasCompras.Helpers
     public class SQLiteDatabaseHelper
     {
         readonly SQLiteAsyncConnection _conn;
+
         public SQLiteDatabaseHelper(string path)
         {
             _conn = new SQLiteAsyncConnection(path);
@@ -32,7 +33,7 @@ namespace MauiAppMinhasCompras.Helpers
         }
         public Task<List<Produto>> Search(string q)
         {
-            string sql = "SELECT * Produto WHERE descricao LIKE '%" + q + "%'";
+            string sql = "SELECT * FROM Produto WHERE descricao LIKE '%" + q + "%'";
             return _conn.QueryAsync<Produto>(sql);
         }
     }
